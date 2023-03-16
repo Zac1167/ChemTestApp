@@ -4,11 +4,11 @@ namespace ChemTestApp
 {
     class Program
     {
-        //Methods
-
+        //Methods and/or functions
+        
         static void Main(string[] args)
         {
-
+            Console.WriteLine("test");
         }
     }
 }
