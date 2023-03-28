@@ -6,17 +6,56 @@ namespace ChemTestApp
     class Program
     {
         //Global variables
-
-
-       
-        
+        static string mostEfficient = "";
+        static float mostEfficientRating = 0;
+        static string leastEfficient = "";
+        static float leastEfficientRating = 99999;
 
         //Methods and/or functions
+        static string CheckFlag()
+        {
+            while (true)
+            {
+                //Get the users choice
+                Console.WriteLine("Press [ENTER] to continue and add another chemical,\nor type 'End' to close the program.");
+                string userInput = Console.ReadLine();
+
+                //Convert user input to capatilized
+                userInput = userInput[0].ToString().ToUpper() + userInput.Substring(1);
+
+                if (userInput.Equals("End") || userInput.Equals(""))
+                {
+                    return userInput;
+                }
+                Console.WriteLine("\nError 2:\n\nYou must either enter 'End' or press [ENTER] to continue.\n");
+            }
+
+        }
+
+        static string CheckChemical()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter a chemical:");
+                string chemicalName = Console.ReadLine();
+
+                if (!chemicalName.Equals(""))
+                {
+                    //Convert the chemical name into a capitalised name.
+                    chemicalName = chemicalName[0].ToString().ToUpper() + chemicalName.Substring(1);
+
+                    return chemicalName;
+                }
+                //Display error whenever no chemical is entered
+                Console.WriteLine("Error 1:\n\nYou must enter a chemical\n");
+            }
+
+        }
+
         static void OneChemical()
         {
             //Enter and store chemical name
-            Console.WriteLine("Enter a chemical:");
-            string chemicalName = Console.ReadLine();
+            string chemicalName = CheckChemical();
 
             float sumEfficiency = 0;
 
@@ -42,7 +81,20 @@ namespace ChemTestApp
             Console.WriteLine("\n10 minutes later...");
 
             //Display final chemical efficiency
-            Console.WriteLine($"\n{chemicalName} has an efficency rating of: {sumEfficiency / 5}\n");
+            float avgEfficiency = sumEfficiency / 5;
+            Console.WriteLine($"\n{chemicalName} has an efficency rating of: {avgEfficiency}\n");
+            
+            //Determin whether the chemical tested is the least or most efficient
+            if (avgEfficiency > mostEfficientRating)
+            {
+                mostEfficientRating = avgEfficiency;
+                mostEfficient = chemicalName;
+            }
+            if (avgEfficiency < leastEfficientRating)
+            {
+                leastEfficientRating = avgEfficiency;
+                leastEfficient = chemicalName;
+            }
 
         }
         
@@ -54,11 +106,12 @@ namespace ChemTestApp
             {
                 OneChemical();
 
-                Console.WriteLine("Press [ENTER] to continue and add another chemical,\nor type 'End' to close the program.");
-                flag = Console.ReadLine();
+                flag = CheckFlag();
             }
 
             //Calculate and display the least and most efficient chemicals
+            Console.WriteLine($"\n\tThe most efficient chemical tested is {mostEfficient},\n\twith an efficiency rating of: {mostEfficientRating}.");
+            Console.WriteLine($"\n\tThe least efficient chemical tested is {leastEfficient},\n\twith an efficiency rating of: {leastEfficientRating}.");
 
         }
 
