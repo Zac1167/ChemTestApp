@@ -20,7 +20,10 @@ namespace ChemTestApp
                 Console.WriteLine("Press [ENTER] to continue and add another chemical,\nor type 'End' to close the program.");
                 string userInput = Console.ReadLine();
 
-                //Convert user input to capatilized
+                //Convert capatalized text into lower case 
+                userInput = userInput.ToLower();
+
+                //Convert first flag letter to capatalized
                 userInput = userInput[0].ToString().ToUpper() + userInput.Substring(1);
 
                 if (userInput.Equals("End") || userInput.Equals(""))
@@ -41,7 +44,7 @@ namespace ChemTestApp
 
                 if (!chemicalName.Equals(""))
                 {
-                    //Convert the chemical name into a capitalised name.
+                    //Convert the chemical name into a capitalized name.
                     chemicalName = chemicalName[0].ToString().ToUpper() + chemicalName.Substring(1);
 
                     return chemicalName;
