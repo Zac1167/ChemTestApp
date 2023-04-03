@@ -24,13 +24,17 @@ namespace ChemTestApp
                 userInput = userInput.ToLower();
 
                 //Convert first flag letter to capatalized
-                userInput = userInput[0].ToString().ToUpper() + userInput.Substring(1);
+                if (!userInput.Equals(""))
+                {
+                    userInput = userInput[0].ToString().ToUpper() + userInput.Substring(1);
+                }
 
                 if (userInput.Equals("End") || userInput.Equals(""))
                 {
                     return userInput;
                 }
                 Console.WriteLine("\nError 2:\n\nYou must either enter 'End' or press [ENTER] to continue.\n");
+
             }
 
         }
@@ -39,16 +43,22 @@ namespace ChemTestApp
         {
             while (true)
             {
-                Console.WriteLine("Enter a chemical:");
+                Console.WriteLine("Please enter one of the chemical listed below:\nChlorine dioxide, Ethanol, Hydrogen peroxide, Hypochlorite, \nIodophor disinfectant, Isopropanol, Peracetic acid, \nPotassium cyanide, Quaternary ammonium compounds, Sulphuric acid.");
                 string chemicalName = Console.ReadLine();
 
                 if (!chemicalName.Equals(""))
                 {
                     //Convert the chemical name into a capitalized name.
                     chemicalName = chemicalName[0].ToString().ToUpper() + chemicalName.Substring(1);
-
-                    return chemicalName;
+                    
+                    //Check if the user entered a real chemical
+                    if (chemicalName.Equals("Chlorine dioxide")|| chemicalName.Equals("Ethanol") || chemicalName.Equals("Hydrogen peroxide") || chemicalName.Equals("Hypochlorite") || chemicalName.Equals("Iodophor disinfectant") || chemicalName.Equals("Isopropanol") || chemicalName.Equals("Peracetic acid") || chemicalName.Equals("Potassium cyanide") || chemicalName.Equals("Quaternary ammonium compounds") || chemicalName.Equals("Sulphuric acid"))
+                    {
+                        return chemicalName;
+                    }
+                    
                 }
+
                 //Display error whenever no chemical is entered
                 Console.WriteLine("Error 1:\n\nYou must enter a chemical\n");
             }
