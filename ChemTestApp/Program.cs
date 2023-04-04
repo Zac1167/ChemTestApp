@@ -1,5 +1,6 @@
 ﻿//Imports
 using System;
+using System.Collections.Generic;
 
 namespace ChemTestApp
 {
@@ -10,6 +11,7 @@ namespace ChemTestApp
         static float mostEfficientRating = 0;
         static string leastEfficient = "";
         static float leastEfficientRating = 99999;
+        static List<string> usedChemicals = new List<string>();
 
         //Methods and/or functions
         static string CheckFlag()
@@ -54,13 +56,21 @@ namespace ChemTestApp
                     //Check if the user entered a real chemical
                     if (chemicalName.Equals("Chlorine dioxide")|| chemicalName.Equals("Ethanol") || chemicalName.Equals("Hydrogen peroxide") || chemicalName.Equals("Hypochlorite") || chemicalName.Equals("Iodophor disinfectant") || chemicalName.Equals("Isopropanol") || chemicalName.Equals("Peracetic acid") || chemicalName.Equals("Potassium cyanide") || chemicalName.Equals("Quaternary ammonium compounds") || chemicalName.Equals("Sulphuric acid"))
                     {
-                        return chemicalName;
+                        if (!usedChemicals.Contains(chemicalName))
+                        {
+                            return chemicalName;
+
+                        }
+                        //Display error whenever an already used chemical is entered
+                        Console.WriteLine("\nError 3:\n\nYou mustn't enter a chemical that has already been used.\n");
+                        CheckChemical();
+                     
                     }
                     
                 }
 
                 //Display error whenever no chemical is entered
-                Console.WriteLine("Error 1:\n\nYou must enter a chemical\n");
+                Console.WriteLine("\nError 1:\n\nYou must enter a chemical.\n");
             }
 
         }
@@ -68,7 +78,7 @@ namespace ChemTestApp
         static void OneChemical()
         {
             //Enter and store chemical name
-            string chemicalName = CheckChemical();
+            usedChemicals.Add(CheckChemical());
 
             float sumEfficiency = 0;
 
@@ -95,18 +105,18 @@ namespace ChemTestApp
 
             //Display final chemical efficiency
             float avgEfficiency = sumEfficiency / 5;
-            Console.WriteLine($"\n{chemicalName} has an efficency rating of: {avgEfficiency}\n");
+            Console.WriteLine($"\n{usedChemicals[usedChemicals.Count-1]} has an efficency rating of: {avgEfficiency}\n");
             
             //Determin whether the chemical tested is the least or most efficient
             if (avgEfficiency > mostEfficientRating)
             {
                 mostEfficientRating = avgEfficiency;
-                mostEfficient = chemicalName;
+                mostEfficient = usedChemicals[usedChemicals.Count - 1];
             }
             if (avgEfficiency < leastEfficientRating)
             {
                 leastEfficientRating = avgEfficiency;
-                leastEfficient = chemicalName;
+                leastEfficient = usedChemicals[usedChemicals.Count - 1];
             }
 
         }
