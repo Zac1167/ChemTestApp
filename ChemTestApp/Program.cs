@@ -47,6 +47,7 @@ namespace ChemTestApp
             {
                 Console.WriteLine("Please enter one of the chemical listed below:\nChlorine dioxide, Ethanol, Hydrogen peroxide, Hypochlorite, \nIodophor disinfectant, Isopropanol, Peracetic acid, \nPotassium cyanide, Quaternary ammonium compounds, Sulphuric acid.");
                 string chemicalName = Console.ReadLine();
+                Console.Clear();
 
                 if (!chemicalName.Equals(""))
                 {
@@ -130,6 +131,9 @@ namespace ChemTestApp
                 OneChemical();
 
                 flag = CheckFlag();
+
+                Console.Clear();
+
             }
 
             //Calculate and display the least and most efficient chemicals
