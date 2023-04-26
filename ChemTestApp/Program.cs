@@ -8,9 +8,17 @@ namespace ChemTestApp
     {
         //Global variables
         static string mostEfficient = "";
+        static string secondMostEfficient = "";
+        static string thirdMostEfficient = "";
         static float mostEfficientRating = 0;
+        static float secondMostEfficientRating = 0;
+        static float thirdMostEfficientRating = 0;
         static string leastEfficient = "";
+        static string secondLeastEfficient = "";
+        static string thirdLeastEfficient = "";
         static float leastEfficientRating = 99999;
+        static float secondLeastEfficientRating = 99999;
+        static float thirdLeastEfficientRating = 99999;
         static List<string> usedChemicals = new List<string>();
 
         //Methods and/or functions
@@ -114,10 +122,30 @@ namespace ChemTestApp
                 mostEfficientRating = avgEfficiency;
                 mostEfficient = usedChemicals[usedChemicals.Count - 1];
             }
+            if (avgEfficiency < mostEfficientRating && avgEfficiency > secondMostEfficientRating)
+            {
+                secondMostEfficientRating = avgEfficiency;
+                secondMostEfficient = usedChemicals[usedChemicals.Count - 1];
+            }
+            if (avgEfficiency < secondMostEfficientRating && avgEfficiency > thirdMostEfficientRating)
+            {
+                thirdMostEfficientRating = avgEfficiency;
+                thirdMostEfficient = usedChemicals[usedChemicals.Count - 1];
+            }
             if (avgEfficiency < leastEfficientRating)
             {
                 leastEfficientRating = avgEfficiency;
                 leastEfficient = usedChemicals[usedChemicals.Count - 1];
+            }
+            if (avgEfficiency > leastEfficientRating && avgEfficiency < secondLeastEfficientRating)
+            {
+                secondLeastEfficientRating = avgEfficiency;
+                secondLeastEfficient = usedChemicals[usedChemicals.Count - 1];
+            }
+            if (avgEfficiency > secondLeastEfficientRating && avgEfficiency < thirdLeastEfficientRating)
+            {
+                thirdLeastEfficientRating = avgEfficiency;
+                thirdLeastEfficient = usedChemicals[usedChemicals.Count - 1];
             }
 
         }
@@ -137,8 +165,16 @@ namespace ChemTestApp
             }
 
             //Calculate and display the least and most efficient chemicals
-            Console.WriteLine($"\n\tThe most efficient chemical tested is {mostEfficient},\n\twith an efficiency rating of: {mostEfficientRating}.");
-            Console.WriteLine($"\n\tThe least efficient chemical tested is {leastEfficient},\n\twith an efficiency rating of: {leastEfficientRating}.");
+            Console.WriteLine($"\n\t   Most efficient chemicals\n" +
+                $"\t|Position|Chemical name|Rating|\n" +
+                $"\t1. {mostEfficient} {mostEfficientRating}\n" +
+                $"\t2. {secondMostEfficient} {secondMostEfficientRating}\n" +
+                $"\t3. {thirdMostEfficient} {thirdMostEfficientRating}");
+            Console.WriteLine($"\n\t   Least efficient chemicals\n" +
+                $"\t|Position|Chemical name|Rating|\n" +
+                $"\t1. {leastEfficient} {leastEfficientRating}\n" +
+                $"\t2. {secondLeastEfficient} {secondLeastEfficientRating}\n" +
+                $"\t3. {thirdLeastEfficient} {thirdLeastEfficient}");
 
         }
 
