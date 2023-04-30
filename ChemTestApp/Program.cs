@@ -152,6 +152,24 @@ namespace ChemTestApp
         
         static void Main(string[] args)
         {
+            //Display help/instructional messaging at the start of the program/process (ASCII)
+            Console.WriteLine
+                (
+                "   ___ _                    _           _   _____          _            \n" +
+               @"  / __\ |__   ___ _ __ ___ (_) ___ __ _| | /__   \___  ___| |_ ___ _ __ "+"\n" +
+               @" / /  | '_ \ / _ \ '_ ` _ \| |/ __/ _` | |   / /\/ _ \/ __| __/ _ \ '__|"+"\n" +
+               @"/ /___| | | |  __/ | | | | | | (_| (_| | |  / / |  __/\__ \ ||  __/ |   "+"\n" +
+               @"\____/|_| |_|\___|_| |_| |_|_|\___\__,_|_|  \/   \___||___/\__\___|_|   "
+                );
+
+            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("\tWelcome to Chemical Tester!\n\tThis app will test and compare multiple cleaning\n\tchemicals, and give them an eficency rating out of 50.\n\tThe higher the number, the greater the efficiency.");
+            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("Press the [Enter] key to continue.");
+
+            Console.ReadLine();
+            Console.Clear();
+
             //Create a loop to input multiple chemicals
             string flag = "";
             while (!flag.Equals("End"))
