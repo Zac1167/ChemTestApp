@@ -80,6 +80,7 @@ namespace ChemTestApp
 
                 //Display error whenever no chemical is entered
                 Console.WriteLine("\nError 1:\n\nYou must enter a chemical.\n");
+
             }
 
         }
