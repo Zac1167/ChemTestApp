@@ -192,7 +192,9 @@ namespace ChemTestApp
                 $"\t|Position|Chemical name|Rating|\n" +
                 $"\t1. {leastEfficient} {leastEfficientRating}\n" +
                 $"\t2. {secondLeastEfficient} {secondLeastEfficientRating}\n" +
-                $"\t3. {thirdLeastEfficient} {thirdLeastEfficient}");
+                $"\t3. {thirdLeastEfficient} {thirdLeastEfficientRating}");
+
+            Console.WriteLine("\nThank you for using Chemical Tester!\nPress the [Enter] key to close the program.");
 
         }
 
