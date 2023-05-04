@@ -20,6 +20,7 @@ namespace ChemTestApp
         static float secondLeastEfficientRating = 99999;
         static float thirdLeastEfficientRating = 99999;
         static List<string> usedChemicals = new List<string>();
+        static readonly List<string> ERRORMESSAGES = new List<string>() { "\nError 1:\n\nYou must enter a chemical.\n", "\nError 2:\n\nYou must either enter 'End' or press [ENTER] to continue.\n", "\nError 3:\n\nYou mustn't enter a chemical that has already been used.\n" };
 
         //Methods and/or functions
         static string CheckFlag()
@@ -43,7 +44,7 @@ namespace ChemTestApp
                 {
                     return userInput;
                 }
-                Console.WriteLine("\nError 2:\n\nYou must either enter 'End' or press [ENTER] to continue.\n");
+                Console.WriteLine(ERRORMESSAGES[1]);
 
             }
 
@@ -71,7 +72,7 @@ namespace ChemTestApp
 
                         }
                         //Display error whenever an already used chemical is entered
-                        Console.WriteLine("\nError 3:\n\nYou mustn't enter a chemical that has already been used.\n");
+                        Console.WriteLine(ERRORMESSAGES[2]);
                         CheckChemical();
                      
                     }
@@ -79,7 +80,7 @@ namespace ChemTestApp
                 }
 
                 //Display error whenever no chemical is entered
-                Console.WriteLine("\nError 1:\n\nYou must enter a chemical.\n");
+                Console.WriteLine(ERRORMESSAGES[0]);
 
             }
 
